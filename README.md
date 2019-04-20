@@ -12,8 +12,9 @@ This time will be different.
 - I changed the master to be my new GitHub reposirtoy `git remote set-url origin https://github.com/kate102/portfolio-bowling_JS.git`.
 - I then pushed up the details of the challenge to the new repository.
 - On GitHub I created a new branch called `README-branch` so that I can write to the README on GitHub and not get into a merge situation with the code from the command line.
-- I then logged onto `Travis` and added this repository, this will provide continuous integration and  
+- I then logged onto `Travis` and added this repository, this will provide continuous integration. I then created the `travis.yml` file.   
 - I then installed `ESLint` [https://eslint.org/docs/user-guide/getting-started] which will check my code quality
+- I then installed jasmine
 
 
 ## Process
