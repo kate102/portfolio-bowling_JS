@@ -1,16 +1,16 @@
 function Frame() {
- _score1 = -1;
- _score2 = -1;
+    this._score1 = -1;
+    this._score2 = -1;
 }
 
 Frame.prototype.enterScore = function(score){
-   if (_score1 <0 ){
-        _score1 = score;
+   if (this._score1 <0 ){
+       this._score1 = score;
    } else {
-        _score2 = score;
+        this._score2 = score;
    }
 }
 
 Frame.prototype.calcTotalScore = function(){
-    return _score1 + _score2;
+    return this._score1 + this._score2;
 }
