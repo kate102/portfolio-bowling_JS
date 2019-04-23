@@ -1,6 +1,7 @@
 function Bowling() {
     this._currentFrame = [];
     this._frames = [];
+    this._const_strike = 10;
 }
 
 Bowling.prototype.enterScore = function(score) {
@@ -16,7 +17,7 @@ Bowling.prototype.enterScore = function(score) {
 }
 
 Bowling.prototype.enterStrikeFrame = function(){
-    this._currentFrame[0] = 10;
+    this._currentFrame[0] = this._const_strike;
     this._currentFrame[1] = 0;
     this.addCurrentFrameToGame();
 }
@@ -43,8 +44,8 @@ Bowling.prototype.calcTotalScore = function() {
 
 Bowling.prototype.calcFrameScore = function(index){
     this._frameScore = this.getFrameScore(index)
-    if (this._frameScore == 10 ){
-        if (this._frames[index][0] == 10 ){      
+    if (this._frameScore == this._const_strike ){
+        if (this._frames[index][0] == this._const_strike ){      
             this._frameScore += this.addStrikeScore(index)
         } else {
             this._frameScore += this.addSpareScore(index)
@@ -70,8 +71,8 @@ Bowling.prototype.addSpareScore = function(index){
 Bowling.prototype.addStrikeScore = function(index){
     var _strikeScore = 0;
     if (index < 9 ) {
-        var _strikeScore = this._frames[index+1][0]
-        if ( _strikeScore != 10 ){
+        _strikeScore = this._frames[index+1][0]
+        if ( _strikeScore != this._const_strike ){
             _strikeScore += this._frames[index+1][1]
         }
         else {
@@ -79,5 +80,4 @@ Bowling.prototype.addStrikeScore = function(index){
         }
     }
     return _strikeScore;
-
 }
