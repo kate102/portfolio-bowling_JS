@@ -1,5 +1,6 @@
 module.exports = {
     "env": {
+	"node": true,  
         "browser": true,
         "es6": true
     },
@@ -13,5 +14,6 @@ module.exports = {
         "sourceType": "module"
     },
     "rules": {
+	"no-console": 0
     }
 };

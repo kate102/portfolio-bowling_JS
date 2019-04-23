@@ -1,11 +1,42 @@
 function Bowling() {
-    return 0;
+    this._currentFrame = [];
+    this._frames = [];
 }
 
-Bowling.prototype.enterScore = function() {
-
+Bowling.prototype.enterScore = function(score) {
+    if ( this._currentFrame.length == 0 ){
+        this._currentFrame[0] = score}
+    else {
+        this._currentFrame[1] = score;
+        this.addCurrentFrameToGame();
+    }
 }
 
-Bowling.prototype.showScore = function() {
-    return 0;
+Bowling.prototype.addCurrentFrameToGame = function() {
+    if (this._currentFrame.length == 1){
+        this._currentFrame[1] = 0;
+    }
+    if (this._currentFrame.length != 0) {
+        this._frames.push(this._currentFrame);
+        this._currentFrame = [];
+    }
+}
+
+Bowling.prototype.calcTotalScore = function() {
+    var _totalScore = 0;
+    this.addCurrentFrameToGame();
+    var _frames_so_far = this._frames.length;
+    for(var count = 0; count < _frames_so_far; count += 1){
+        _totalScore += this.calcFrameScore(count)
+    }
+    return _totalScore;
+}
+
+Bowling.prototype.calcFrameScore = function(index){
+    if (this._frames[index].length == 2 ){
+        return this._frames[index][0] + this._frames[index][1];   
+    }
+    else {
+        return this._frames[index][0];   
+    }
 }
