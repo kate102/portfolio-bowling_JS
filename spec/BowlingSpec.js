@@ -46,4 +46,13 @@ describe("The Bowling Score Card Challenge", function(){
         game.enterScore(2);
         expect(game.calcTotalScore()).toEqual(24);
     }) 
+    // Perfect Game
+    it("Perfect Game: the score should be 300 for the perfect game", function() {
+        game = new Bowling();
+        var counter;
+        for (counter = 0; counter < 12; counter++){
+            game.enterScore(10);
+        }
+        expect(game.calcTotalScore()).toEqual(300);
+    }) 
 });
