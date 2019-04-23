@@ -30,12 +30,12 @@ describe("The Bowling Score Card Challenge", function(){
         expect(game.calcTotalScore()).toEqual(50);
     })
 
-    // // Strike Game
-    // it("Strike Game: the score should be 10 plus the next try", function() {
-    //     game = new Bowling();
-    //     game.enterScore(5);
-    //     game.enterScore(5);
-    //     game.enterScore(5);
-    //     expect(game.calcTotalScore()).toEqual(20);
-    // }) 
+    // Strike Game
+    it("Strike Game: the score should be 10 plus the next try", function() {
+        game = new Bowling();
+        game.enterScore(5);
+        game.enterScore(5);
+        game.enterScore(5);
+        expect(game.calcTotalScore()).toEqual(20);
+    }) 
 });

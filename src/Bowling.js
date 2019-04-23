@@ -33,10 +33,23 @@ Bowling.prototype.calcTotalScore = function() {
 }
 
 Bowling.prototype.calcFrameScore = function(index){
+    _frameScore = this.getFrameScore(index)
+    if (_frameScore == 10 ){
+        _frameScore += this.addSpareScore(index)
+    }
+    return _frameScore;
+}
+
+Bowling.prototype.getFrameScore = function(index) {
     if (this._frames[index].length == 2 ){
-        return this._frames[index][0] + this._frames[index][1];   
+        _frameScore = this._frames[index][0] + this._frames[index][1];   
     }
     else {
-        return this._frames[index][0];   
+        _frameScore = this._frames[index][0];   
     }
+    return _frameScore;
+}
+
+Bowling.prototype.addSpareScore = function(index){
+    return this._frames[index+1][0]
 }
