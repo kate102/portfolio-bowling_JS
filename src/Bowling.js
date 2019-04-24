@@ -5,7 +5,7 @@ function Bowling() {
 }
 
 Bowling.prototype.enterScore = function(score) {
-    if ( score == 10){
+    if ( score == this._const_strike){
         this.enterStrikeFrame();
     } else 
     if ( this._currentFrame.length == 0 ){
