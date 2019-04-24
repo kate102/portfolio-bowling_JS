@@ -1,0 +1,83 @@
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="src/Bowling.js"></script>
+    <link rel="stylesheet" href="file:///Users/student/Projects/portfolio/bowling-challenge/main.css">
+  </head>
+  <body id="body">
+    <input type="text" id="playername" name="" value="">
+    <button class="button" id="newplayer" type="button" name="button">Add Player</button>
+    <button type="button" id="startbutton" name="button">Start Game</button>
+    <table id="table" class="table" style="width: 100%">
+      <tr>
+        <th class="playernames" >  Players </th>
+        <th class="header" colspan="2"> Frame 1 </th>
+        <th class="header" colspan="2"> Frame 2 </th>
+        <th class="header" colspan="2"> Frame 3 </th>
+        <th class="header" colspan="2"> Frame 4 </th>
+        <th class="header" colspan="2"> Frame 5 </th>
+        <th class="header" colspan="2"> Frame 6 </th>
+        <th class="header" colspan="2"> Frame 7 </th>
+        <th class="header" colspan="2"> Frame 8 </th>
+        <th class="header" colspan="2"> Frame 9 </th>
+        <th class="header" colspan="3"> Frame 10 </th>
+        <th class="score" > Score </th>
+      </tr>
+    </table>
+  </body>
+  <script type="text/javascript">
+    var button = document.getElementById('newplayer')
+    var table = document.getElementById('table')
+    let game
+    window.addEventListener('load', function(){
+      game = new Bowling()
+      button.addEventListener('click',function(){
+        name = document.getElementById('playername').value
+        // game.addplayer(name)
+        addrow()
+      })
+    })
+    var start = document.getElementById('startbutton')
+    start.addEventListener('click',function(){
+      start.setAttribute("hidden", true)
+      button.setAttribute("hidden", true)
+      document.getElementById('playername').setAttribute("hidden", true)
+      for (var frame = 1; frame < 10; frame++) {
+        var roll = frame*2
+        // for (var i = 0; i < game.players.length; i++) {
+        for (var i = 0; i < game.length; i++) {
+          turn(i,roll-2)
+          turn(i,roll-1)
+        }
+      }
+    })
+    addrow = function(){
+        // addrow = function(name){
+      tr = document.createElement('tr')
+      th = document.createElement('th')
+      th.append(document.createTextNode(name))
+      tr.append(th)
+      for (var i = 0; i < 21; i++) {
+        var cell = document.createElement('td')
+        var field = document.createElement('input')
+        field.setAttribute('type', 'number')
+        field.setAttribute('id', "number" + name+ i)
+        field.setAttribute('disabled', true)
+        cell.append(field)
+        field.setAttribute('class', "number")
+        tr.append(cell)
+      }
+      tr.append(document.createElement('td'))
+      table.append(tr)
+    }
+    turn = function(player, roll){
+      console.log('number' + game.players[player].name + roll);
+      document.getElementById('number' + game.players[player].name + roll ).removeAttribute("disabled")
+      document.getElementById('number' + game.players[player].name + roll ).addEventListener('change', function(value){
+        game.players[player].addroll(document.getElementById('number' + game.players[player].name + roll ).value)
+        document.getElementById('number' + game.players[player].name + roll ).setAttribute("disabled", true)
+      })
+    }
+  </script>
+</html>

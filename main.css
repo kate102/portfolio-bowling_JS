@@ -1,0 +1,29 @@
+table, th, td {
+    border: 1px solid black;
+  }
+  
+  .button {
+    margin: 10px;
+  }
+  
+  .span {
+    visibility: hidden;
+  }
+  
+  .show {
+    visibility: visible;
+  }
+  .score {
+    width: 10%;
+  }
+  
+  .playernames {
+    width: 20;
+  }
+  
+  .header {
+    width: 7%;
+  }
+  .number {
+    width: 35px;
+  }
